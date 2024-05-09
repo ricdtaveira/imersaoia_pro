@@ -7,7 +7,7 @@ contidas em arquivos PDF de editais de Concursos Publicos. Obtidas essas palavra
 ## Roteiro de Implementação ##
 
 1. Carga do PDF do Edital no Google AI Studio
-Carregar o arquivo Edital_SEPLAG.pdf pela interface do GOOGLE AI Studio.
+Carregar o arquivo `Edital_SEPLAG.pdf` pela interface do *GOOGLE AI Studio*.
 
 2. Executar o seguinte prompt:
 ```

@@ -1,0 +1,82 @@
+Criar um código Python onde: dado uma lista de palavras chave e a url de um 
+site. Verificar se aquela palavra chave esta contida no conteúdo de um site. Se estiver criar uma associação entre a palavra chave e o link correspondente no site.
+
+
+from bs4 import BeautifulSoup
+import requests
+
+def associar_palavras_chave(url, palavras_chave):
+  """
+  Verifica se as palavras-chave estão presentes no conteúdo do site e associa-as aos links correspondentes.
+
+  Args:
+      url: A URL do site.
+      palavras_chave: Uma lista de palavras-chave a serem verificadas.
+
+  Returns:
+      Um dicionário onde as chaves são as palavras-chave encontradas e os valores são listas de URLs correspondentes.
+  """
+
+  try:
+    response = requests.get(url)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    associacoes = {}  # Dicionário para armazenar as associações
+
+    # Iterar sobre as palavras-chave
+    for palavra_chave in palavras_chave:
+      # Buscar a palavra-chave no texto do site (ignorando maiúsculas/minúsculas)
+      if palavra_chave.lower() in soup.get_text().lower():
+        # Encontrar todos os links na página
+        links = soup.find_all('a', href=True)
+        # Adicionar os links à lista de associações da palavra-chave
+        associacoes.setdefault(palavra_chave, []).extend([link['href'] for link in links])
+
+    return associacoes
+
+  except requests.exceptions.RequestException as e:
+    print(f"Erro ao acessar a URL: {e}")
+    return None
+
+# Exemplo de uso
+url = "https://www.exemplo.com"
+palavras_chave = ["notícia", "tecnologia", "python"]
+
+associacoes = associar_palavras_chave(url, palavras_chave)
+
+if associacoes:
+  for palavra, links in associacoes.items():
+    print(f"Palavra-chave: {palavra}")
+    print("Links:")
+    for link in links:
+      print(f"  - {link}")
+else:
+  print("Nenhuma palavra-chave encontrada no site.")
+Use code with caution.
+Python
+Explicação:
+Importações: Importamos as bibliotecas BeautifulSoup e requests.
+Função associar_palavras_chave():
+Recebe a URL do site e a lista de palavras-chave como argumentos.
+Obtém o conteúdo HTML do site usando requests.
+Analisa o HTML com BeautifulSoup.
+Cria um dicionário associacoes para armazenar as associações entre palavras-chave e links.
+Itera sobre cada palavra-chave:
+Verifica se a palavra-chave (ignorando maiúsculas/minúsculas) está presente no texto do site.
+Se encontrada, coleta todos os links (<a>) da página.
+Adiciona os links à lista de associações da palavra-chave no dicionário.
+Retorna o dicionário de associações.
+Tratamento de Erros: Lida com possíveis erros durante a solicitação web.
+Exemplo de Uso: Demonstra como usar a função com uma URL e uma lista de palavras-chave. Imprime as associações encontradas.
+Pontos a considerar:
+Este script busca as palavras-chave no texto completo da página. Pode ser necessário refinar a busca para áreas específicas (título, cabeçalhos, etc.).
+O script coleta todos os links da página. Pode ser necessário filtrar os links para obter apenas os relevantes (ex: links internos, links que contenham a palavra-chave).
+A busca por palavras-chave ignora maiúsculas/minúsculas. Pode ser necessário ajustar isso dependendo das suas necessidades.
+Possíveis Melhorias:
+Implementar stemming ou lematização para encontrar variações das palavras-chave.
+Usar expressões regulares para uma busca mais flexível.
+Integrar com bibliotecas de processamento de linguagem natural (NLP) para análise semântica.
+Este código fornece uma base para associar palavras-chave a links em um site. Você pode adaptá-lo e aprimorá-lo de acordo com suas necessidades específicas e a estrutura do site que você está analisando.
+

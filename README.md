@@ -57,3 +57,5 @@ Resultado:
 ```
 
 ## Fontes Acessadas ##
+
+1. [Google Gemini Cookbook](https://github.com/google-gemini/cookbook).

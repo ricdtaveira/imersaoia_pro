@@ -2,7 +2,7 @@
 
 ## Resumo do Projeto ##
 O projeto nesse repositório usa o modelo multimodal do Gemini. Se propõe a identificar palavras chaves relacionadas a Tecnologia da Informação
-contidas em arquivos PDF de editais de Concursos Publicos. Obtidas essas palavras chave é verificada se as mesmas estão contidas em sites que ofertam cursos e capacitações nessas tecnologias reportando a associação entre as palavras-chave com o link de contéudo do site verificado.     
+contidas em arquivos PDF de editais de Concursos Publicos. Obtidas essas palavras chave é verificada se as mesmas estão contidas em sites que ofertam cursos e capacitações nessas tecnologias reportando a associação entre as palavras-chave com o link de conteúdo do site verificado.     
 
 ## Roteiro de Implementação ##
 

@@ -1,15 +1,20 @@
 # Projeto de Imersão de IA (Alura e Google) #
 
-## Resumo do Projeto ##
+## 1. Resumo do Projeto ##
 O projeto nesse repositório usa o modelo multimodal do Gemini. Se propõe a identificar palavras chaves relacionadas a Tecnologia da Informação
 contidas em arquivos PDF de editais de Concursos Publicos. Obtidas essas palavras chave é verificada se as mesmas estão contidas em sites que ofertam cursos e capacitações nessas tecnologias reportando a associação entre as palavras-chave com o link de conteúdo do site verificado.     
 
-## Roteiro de Implementação ##
+## 2. Aplicação do Projeto ##
+O projeto pode ser aplicado como ferramenta de marketing prr empresas que fornecem cursos online e livrarias para evidenciar que os seus produtos e serviços estão 
+alinhados ao contéudo de um determinado edital de concurso.
+
+## 3. Backlog do Projeto ##
 
 1. Carga do PDF do Edital no Google AI Studio
 Carregar o arquivo `Edital_SEPLAG.pdf` pela interface do **GOOGLE AI Studio**.
 
-2. Executar o seguinte prompt:
+2. Execução e Teste de Prompt de carga do PDF do Edital:
+Executar o prompt abaixo:
 ```
 Reporte o conteúdo do Edital relacionado ao Cargo 3 de Tecnologia da Informação. Escreva usando a Língua Portuguesa. 
 ```
